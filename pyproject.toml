@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools"]  # REQUIRED if [build-system] table is used
+build-backend = "setuptools.build_meta"  # If not defined, then legacy behavior can happen.
+
+
+[project]
+name = "beat-transformer"  # REQUIRED, is the only field that cannot be marked as dynamic.
+version = "0.0.1"  # REQUIRED, although can be dynamic
+description = "Beat Transformer"
+readme = "README.md"
+requires-python = ">=3.8"
+# authors = [
+#   {name = "Chih-Pin Tan", email = "tanchihpin0517@gmail.com" }
+# ]
+maintainers = [
+  {name = "Chih-Pin Tan", email = "tanchihpin0517@gmail.com" }
+]
+dynamic = ["dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.optional-dependencies]
+dev = ["check-manifest"]
+test = ["coverage"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "src"
+]
